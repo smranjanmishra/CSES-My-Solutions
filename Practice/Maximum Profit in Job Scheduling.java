@@ -69,3 +69,23 @@ class Solution {
         return dp[n - 1];
     }
 }
+
+
+
+
+
+So the problem is saying we have multiple jobs with start time, end time, and profit, 
+and we need to pick some jobs such that they don’t overlap and the total profit is maximum.
+
+So I’m thinking this looks like a decision problem — for every job I can either take it or skip it. 
+That usually hints towards DP.
+
+Now if I take a job, I can’t take any overlapping job, so I need to find the next job 
+which starts after this one ends. To make this efficient, I’ll sort all jobs based on end time. 
+That way, I can use binary search to quickly find the last non-overlapping job.
+
+Then I’ll use a dp array where dp[i] means the maximum profit I can get till the i-th job. 
+For each job, I have two choices — either skip it, so profit stays dp[i-1], or take it, 
+so I add its profit plus the best profit from the last non-overlapping job.
+
+I take the maximum of these two and store it in dp[i]. Finally, dp[n-1] will give me the answer.
