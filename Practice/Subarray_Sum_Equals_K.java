@@ -18,3 +18,12 @@ public class Solution {
         return result;
     }
 }
+
+
+
+
+I’ll use prefix sum with a HashMap. I keep a running sum while traversing the array. 
+At each index, I check if there was a previous prefix sum equal to (currentSum - k). 
+If yes, that means the subarray between those two indices has sum k. 
+I store the frequency of prefix sums in a map so I can count how many such subarrays exist. 
+Now I can count all subarrays with sum k in one pass.
